@@ -1,0 +1,91 @@
+{
+  "group": "G23",
+  "topic": "Đơn hàng Shopee",
+  "prepared_on": "2026-09-20",
+  "note": "Bộ 5 câu hỏi dùng chung cho các cấu hình so sánh. Gold answer dựa trên corpus tóm lược có nguồn, không lấy từ phản hồi LLM.",
+  "queries": [
+    {
+      "id": "Q1",
+      "question": "Tôi cần vào đâu trên ứng dụng Shopee để xem trạng thái đơn mua?",
+      "gold_answer": "Mở mục Tôi > Đơn mua trên ứng dụng Shopee để xem tiến trình đơn hàng.",
+      "metadata_filter": null,
+      "evidence": [
+        {
+          "doc_id": "buyer-order-status",
+          "required_phrases": [
+            "Tôi > Đơn mua",
+            "tiến trình"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Q2",
+      "question": "Đơn do hãng vận chuyển khác SPX đang Chờ lấy hàng thì tôi có thể hủy ngay không?",
+      "gold_answer": "Không tự động hủy ngay: phải chờ người bán chấp nhận. Nếu người bán từ chối, đơn vẫn tiếp tục giao.",
+      "metadata_filter": {
+        "audience": "buyer"
+      },
+      "evidence": [
+        {
+          "doc_id": "buyer-cancel-order",
+          "required_phrases": [
+            "Chờ lấy hàng",
+            "phải đợi người bán chấp nhận",
+            "nếu bị từ chối, đơn vẫn tiếp tục giao"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Q3",
+      "question": "Đơn Shopee đã hủy có khôi phục để giao lại và giữ ưu đãi cũ được không?",
+      "gold_answer": "Không khôi phục đơn đã hủy để giao lại. Cần đặt đơn mới; có thể trao đổi giá với shop, không mặc định giữ được ưu đãi cũ.",
+      "metadata_filter": null,
+      "evidence": [
+        {
+          "doc_id": "buyer-cancelled-order",
+          "required_phrases": [
+            "không thể khôi phục",
+            "đặt đơn mới",
+            "thay vì mặc định giữ được ưu đãi cũ"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Q4",
+      "question": "Đơn trả trước bằng thẻ tín dụng hoặc ghi nợ cần thanh toán trong bao lâu, nếu quá hạn thì sao?",
+      "gold_answer": "Hoàn tất trong 12 giờ kể từ lúc đặt hàng thành công; quá hạn không thanh toán thì hệ thống tự động hủy đơn.",
+      "metadata_filter": null,
+      "evidence": [
+        {
+          "doc_id": "buyer-prepayment",
+          "required_phrases": [
+            "12 giờ",
+            "kể từ khi đặt hàng thành công",
+            "tự động hủy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Q5",
+      "question": "Tôi xử lý yêu cầu hủy đơn hàng như thế nào?",
+      "gold_answer": "Với vai trò người bán trên Kênh Quản Lý Shop: vào Đơn hủy > Chờ phản hồi > Xem thêm, đồng ý hoặc từ chối. Đồng ý chuyển sang Đã hủy; từ chối về Đã đóng gói trong Chờ lấy hàng.",
+      "metadata_filter": {
+        "audience": "seller"
+      },
+      "evidence": [
+        {
+          "doc_id": "seller-cancel-request",
+          "required_phrases": [
+            "Đơn hủy > Chờ phản hồi > Xem thêm",
+            "Đồng ý làm đơn chuyển sang Đã hủy",
+            "từ chối đưa đơn về Đã đóng gói"
+          ]
+        }
+      ]
+    }
+  ]
+}
